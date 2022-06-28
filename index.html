@@ -13,13 +13,43 @@
 <body>
     <section class = 'ui-widget'>
         <label for="title">
-            Title:
+            Search:
         </label>
         <input id="title">
-        <ul id="cast"></ul>
+    </section>
+    <section>
+        <h1 id="displayTitle"></h1>
+    </section>
+    <section>
+        <ul>
+            <li id="year"></li>
+            <li id="rated"></li>
+            <li id="runtime"></li>
+        </ul>
+        <ul>
+            <li id="imdbRating"></li>
+            <li id="imdbVotes"></li>
+        </ul>
     </section>
     <section>
         <img src="">
+    </section>
+    <iframe src="/default.asp" width="500" height="300" style="border:1px solid black;">
+    </iframe>
+    <section>
+        <ul id="genres"></ul>
+    </section>
+    <section>
+        <p id="plot"></p>
+    </section>
+    <section>
+        <ul id="directors"></ul>
+    </section>
+    <section>
+        <ul id="writers"></ul>
+    </section>
+    <section>
+        <ul id="cast"></ul>
     </section>
     <script src = '/main.js'></script>
 </body>

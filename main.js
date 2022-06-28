@@ -16,15 +16,35 @@ $(document).ready(function () {
         minLength: 2,
         select: function(event, ui) {
             console.log(ui.item.id)
+            let movieTitle = '';
             fetch(`http://localhost:8000/get/${ui.item.id}`)
                 .then(result => result.json())
                 .then(result => {
-                    $('#cast').empty()
-                    result.cast.forEach(cast =>
+                    movieTitle = (result.title).split(' ').join('+');
+                    console.log(movieTitle)
+                    $('#displayTitle').empty().append(result.title)
+                    $('img').attr('src', result.poster)
+                    $('#plot').empty().append(result.fullplot)
+                    $('#genres').empty()
+                    result.genres.forEach(genre =>
                         {
-                            $("#cast").append(`<li>${cast}</li>`)
+                            $("#genres").append(`<li>${genre}</li>`)
                         })
-                        $('img').attr('src', result.poster)
+                    $('#writers').empty().append(`Writers: ${result.writers.join(' - ')}`)
+                    $('#directors').empty().append(`Directors: ${result.directors.join(' - ')}`)
+                    $('#cast').empty().append(`Stars: ${result.cast.join(' - ')}`)
+                    $('#year').empty().append(result.year)
+                    $('#rated').empty().append(result.rated)
+                    $('#runtime').empty().append(`${result.runtime} min`)
+                    $('#imdbRating').empty().append(`${result.imdb.rating}/10`)
+                    $('#imdbVotes').empty().append(`${result.imdb.votes} votes`)
+                    $('#imdbVotes').empty().append(result.imdb.votes)
+                    fetch(`http://localhost:8000/video/${movieTitle}`)
+                        .then(result => result.json())
+                        .then(result => {
+                            console.log(result.items[0].id.videoId)
+                            $('iframe').attr('src', `https://www.youtube.com/embed/${result.items[0].id.videoId}`)
+                        })
                 })
         }
     })

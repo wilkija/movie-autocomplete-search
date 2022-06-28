@@ -12,6 +12,9 @@ let db,
     dbName = 'sample_mflix',
     collection
 
+let key = process.env.API_KEY;
+console.log(key)
+
 MongoClient.connect(dbConnectionStr)
     .then(client => {
         console.log(`Connected to database`)
@@ -56,8 +59,24 @@ app.get("/get/:id", async (request, response) => {
     } catch (error) {
         response.status(500).send({message: error.message})
     }
-}
-)
+})
+
+app.get("/video/:id", async (request, response) => {
+    try {
+        const uri = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${key}&type=video&maxResults=1&q=${request.params.id}+movie+trailer`
+        const res = await fetch(uri, {
+            method: 'GET',
+            mode: 'cors',
+            headers: { 'Content-Type': 'application/json' }
+          }).then(response => response.json());
+
+          return response.json(res);
+    } catch (error) {
+        response.status(500).send({message: error.message})
+    }
+
+})
+
 
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Server is running.`)
