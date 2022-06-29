@@ -28,7 +28,7 @@ $(document).ready(function () {
                     $('#genres').empty()
                     result.genres.forEach(genre =>
                         {
-                            $("#genres").append(`<li>${genre}</li>`)
+                            $("#genres").append(`<li class="list-group-item bg-transparent text-white border border-white rounded-pill">${genre}</li>`)
                         })
                     $('#writers').empty().append(`Writers: ${result.writers.join(' - ')}`)
                     $('#directors').empty().append(`Directors: ${result.directors.join(' - ')}`)

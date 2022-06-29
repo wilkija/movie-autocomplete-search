@@ -1,12 +1,8 @@
 body {
-    margin-left: 3%;
-    margin-top: 2%;
+    background-color: #1f1f1f !important;
+    color: white !important;
 }
 
-img {
-    max-height: 500px;
-}
-
-input {
-    width: 400px;
+.custom-div {
+    width: 10px !important;
 }

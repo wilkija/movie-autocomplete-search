@@ -13,7 +13,6 @@ let db,
     collection
 
 let key = process.env.API_KEY;
-console.log(key)
 
 MongoClient.connect(dbConnectionStr)
     .then(client => {
