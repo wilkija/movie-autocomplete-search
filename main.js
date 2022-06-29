@@ -36,7 +36,7 @@ $(document).ready(function () {
                     $('#year').empty().append(result.year)
                     $('#rated').empty().append(result.rated)
                     $('#runtime').empty().append(`${result.runtime} min`)
-                    $('#imdbRating').empty().append(`${result.imdb.rating}/10`)
+                    $('#imdbRating').empty().append(`${result.imdb.rating} / 10`)
                     $('#imdbVotes').empty().append(`${result.imdb.votes} votes`)
                     $('#imdbVotes').empty().append(result.imdb.votes)
                     fetch(`http://localhost:8000/video/${movieTitle}`)

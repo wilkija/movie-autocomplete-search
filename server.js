@@ -38,7 +38,10 @@ app.get("/search", async (request,response) => {
                             "prefixLength": 3
                         }
                     }
-                }
+                } 
+            },
+            {
+                "$limit": 10
             }
         ]).toArray()
         // console.log(result)
